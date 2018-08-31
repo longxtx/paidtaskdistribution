@@ -12,12 +12,12 @@ router.get('/', function(req, res) {
 });
 
 /*login*/
-router.get('/login', function(req, res) {
+router.get('/tologin', function(req, res) {
     res.render('login', { title: 'login' });
 });
 
 /*ucenter*/
-router.post('/ucenter', function(req, res) {
+router.post('/login', function(req, res) {
 
             console.log('in.....'+req.body.username);
     

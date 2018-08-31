@@ -44,7 +44,7 @@ app.use(session({
 app.use(function (req, res, next) {
     var url = req.originalUrl;
     console.log("url:"+url+" User:"+req.session.loginUser+"isgt:"+url.search("/gt/"));
-    if (url != "/ucenter"&&url != "/"&&url != "/login" && url.search("\/gt\/")<0 && !req.session.loginUser) {
+    if (url.search("\/register")<0 &&url.search("\/login")<0 &&url != "/"&&url != "/tologin" && url.search("\/gt\/")<0 && !req.session.loginUser) {
          console.log('is Logout!');
         return res.redirect('/');
     }

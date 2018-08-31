@@ -5,7 +5,14 @@
 	    "mongodb_host":"youdomian",
 	    "mongodb_port":"27017",
 	    "mongodb_db":"youdb",
-	    "sms_apikey":"youkey"
+		"sms_apikey":"you key",
+	    "geetest_id":"you geetest id",
+	    "geetest_key":"you key ",
+	    "infura_key":"you key",
+	    "blockchain_apicode":"you code",
+	    "blockchain_apiHost":"http://you host：port",
+	    "btc_guid":"you guid",
+	    "btc_name":"you name"
 	},
 	"version" : "dev",
 	"isdev":"1"

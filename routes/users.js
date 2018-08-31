@@ -9,14 +9,15 @@ router.get('/', function(req, res) {
 });
 
 /*sdduser*/
-router.get('/add', function(req, res) {
-    var add_doc = {name: 'long', password: '123',user_phone:'18676366166',create_time:moment().format('YYYYMMDDHHmmss'),update_time:moment().format('YYYYMMDDHHmmss')};
+router.post('/register', function(req, res) {
+
+    var add_doc = {name:req.body.usernamesignup, password:req.body.passwordsignup,user_phone:req.body.emailsignup,create_time:moment().format('YYYYMMDDHHmmss'),update_time:moment().format('YYYYMMDDHHmmss')};
     (function(){
 
         MongoDB.save('t_userinfo', add_doc, function (err, doc) {
                 if(doc == 1){
                     console.log(add_doc.name + ": Save success in " + new Date());
-                     res.render('ucenter', { user:doc });
+                     res.render('/tologin', { user:add_doc.name });
                 }else{
                     console.log(add_doc.name + ": login failed in " + new Date());
                     res.redirect('/');
