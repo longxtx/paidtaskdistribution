@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>添加预约</title>
+</head>
+<body>
+
+<h1>添加预约</h1>
+
+<form action="add" method="post">
+    <p>当前登录用户：<%= name %>，<a href="/logout" id="logout">退出登陆</a></p>
+	<input type="hidden" name="user_id" value="<%= uid %>">
+	<input type="text" name="user_phone" value="<%= uphone %>">
+    <select name="type_str">
+    	<option value="ETH_USDT">ETH_USDT</option>
+    	<option value="ETH_USDT">BTC_USDT</option>
+    	<option value="EOS_USDT">EOS_USDT</option>
+    	<option value="ETC_USDT">ETC_USDT</option>
+    </select>
+    <input type="text" name="price_h">
+    <input type="text" name="price_l">
+      <p><input type="submit" value="submit"></p>
+</form>
+</body>
+</html>

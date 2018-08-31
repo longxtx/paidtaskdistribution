@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>任务列表</title>
+</head>
+<body>
+
+<h1>任务列表</h1>
+
+
+    <p>当前登录用户：<%= name %>，<a href="/logout" id="logout">退出登陆</a></p>
+
+  	<ul>
+        <% arranges.forEach(function(item){%>
+                <li><%=item.type_str %></li>
+         <% }) %>
+    </ul>
+
+</body>
+</html>

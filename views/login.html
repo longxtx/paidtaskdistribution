@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 lt8"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7 lt8"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8 lt8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="UTF-8" />
+        <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
+        <title>Login and Registration Form PTD</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="description" content="Login and Registration Form with HTML5 and CSS3" />
+        <meta name="keywords" content="html5, css3, form, switch, animation, :target, pseudo-class" />
+        <meta name="author" content="Codrops" />
+        <link rel="shortcut icon" href="/images/favicon.ico"> 
+        <link rel='stylesheet' href='/stylesheets/loginbase.css' />
+        <link rel='stylesheet' href='/stylesheets/login.css' />
+        <link rel='stylesheet' href='/stylesheets/animate-custom.css' />
+    </head>
+
+        <div class="container">
+            <!-- Codrops top bar -->
+            <div class="codrops-top">
+                <a href="/">
+                    <strong>&laquo; PTD: </strong>Login and Registration
+                </a>
+                <span class="right">
+                    <a href="">
+                        <strong>Login</strong>
+                    </a>
+                </span>
+                <div class="clr"></div>
+            </div><!--/ Codrops top bar -->
+            <header>
+                <h1>Paid Task Distribution  <span>价值分享平台</span></h1>
+                <nav class="codrops-demos">
+                    <span>基于 <strong>区块链</strong>的有偿分享平台</span>
+                </nav>
+            </header>
+            <section>               
+                <div id="container_demo" >
+                    <a class="hiddenanchor" id="toregister"></a>
+                    <a class="hiddenanchor" id="tologin"></a>
+                    <div id="wrapper">
+                        <div id="login" class="animate form">
+                            <form  action="ucenter" autocomplete="on"> 
+                                <h1>登录</h1> 
+                                <p> 
+                                    <label for="username" class="uname" data-icon="u" > 邮箱或用户名 
+                                    </label>
+                                    <input id="username" name="username" required="required" type="text" placeholder="邮箱 或 用户名"/>
+                                </p>
+                                <p> 
+                                    <label for="password" class="youpasswd" data-icon="p"> 密码 
+                                    </label>
+                                    <input id="password" name="password" required="required" type="password" placeholder="password" /> 
+                                </p>
+
+                                <p>
+                                        <label>完成验证：</label>
+                                        <div id="captcha">
+                                            <p id="wait" class="show">正在加载验证码......</p>
+                                        </div>
+                                 </p>
+
+                                <p class="keeplogin"> 
+                                    <input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> 
+                                    <label for="loginkeeping">保持登陆状态</label>
+                                </p>
+                                <p class="login button"> 
+                                    <input type="button" id="btn" value="Login" /> 
+                                </p>
+                                <p class="change_link">
+                                    还不是会员 ?
+                                    <a href="#toregister" class="to_register">注册</a>
+                                </p>
+                            </form>
+                        </div>
+
+                        <div id="register" class="animate form">
+                            <form  action="ucenter" autocomplete="on"> 
+                                <h1> 注册 </h1> 
+                                <p> 
+                                    <label for="usernamesignup" class="uname" data-icon="u">用户名</label>
+                                    <input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="用户名" />
+                                </p>
+                                <p> 
+                                    <label for="emailsignup" class="youmail" data-icon="e" > 联系邮箱</label>
+                                    <input id="emailsignup" name="emailsignup" required="required" type="email" placeholder="邮箱名@邮箱.com"/> 
+                                </p>
+                                <p> 
+                                    <label for="passwordsignup" class="youpasswd" data-icon="p">登录密码 </label>
+                                    <input id="passwordsignup" name="passwordsignup" required="required" type="password" placeholder="登录密码"/>
+                                </p>
+                                <p> 
+                                    <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">确认登录密码 </label>
+                                    <input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" placeholder="确认登录密码"/>
+                                </p>
+                                <p class="signin button"> 
+                                    <input type="submit" value="Sign up"/> 
+                                </p>
+                                <p class="change_link">  
+                                    已经是会员 ?
+                                    <a href="#tologin" class="to_register"> 登录 </a>
+                                </p>
+                            </form>
+                        </div>
+                        
+                    </div>
+                </div>  
+            </section>
+        </div>
+ 
+
+
+<!-- 注意，验证码本身是不需要 jquery 库，此处使用 jquery 仅为了在 demo 使用，减少代码量 -->
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+
+<!-- 引入 gt.js，既可以使用其中提供的 initGeetest 初始化函数 -->
+<script src="/js/gt.js"></script>
+
+<script>
+    var handler = function (captchaObj) {
+        captchaObj.appendTo('#captcha');
+        captchaObj.onReady(function () {
+            $("#wait").hide();
+        });
+        $('#btn').click(function () {
+            var result = captchaObj.getValidate();
+            if (!result) {
+                return alert('请完成验证');
+            }
+            $.ajax({
+                url: 'gt/validate',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    username: $('#username2').val(),
+                    password: $('#password2').val(),
+                    geetest_challenge: result.geetest_challenge,
+                    geetest_validate: result.geetest_validate,
+                    geetest_seccode: result.geetest_seccode
+                },
+                success: function (data) {
+                    if (data.status === 'success') {
+                       $('#loginform').submit();
+                    } else if (data.status === 'fail') {
+                           $("#notice").show();
+                        captchaObj.reset();
+                    }
+                }
+            });
+        })
+        // 更多前端接口说明请参见：http://docs.geetest.com/install/client/web-front/
+    };
+
+    $.ajax({
+        url: "gt/register?t=" + (new Date()).getTime(), // 加随机数防止缓存
+        type: "get",
+        dataType: "json",
+        success: function (data) {
+
+            // 调用 initGeetest 进行初始化
+            // 参数1：配置参数
+            // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它调用相应的接口
+            initGeetest({
+                // 以下 4 个配置参数为必须，不能缺少
+                gt: data.gt,
+                challenge: data.challenge,
+                offline: !data.success, // 表示用户后台检测极验服务器是否宕机
+                new_captcha: data.new_captcha, // 用于宕机时表示是新验证码的宕机
+
+                product: "popup", // 产品形式，包括：float，popup
+                width: "300px"
+                // 更多前端配置参数说明请参见：http://docs.geetest.com/install/client/web-front/
+            }, handler);
+        }
+    });
+</script>
+</body>
+</html>

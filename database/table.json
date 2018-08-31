@@ -1,0 +1,19 @@
+{
+    "t_userinfo": {
+        "user_phone": "String",
+        "name": "String",
+        "password": "String",
+        "create_time": "String",
+        "update_time": "String"
+    },
+    "t_arrange_data": {
+        "user_id": "String",
+        "user_phone": "String",
+        "type_str": "String",
+        "price_h": "Number",
+        "price_l": "Number",
+        "status": "Number",
+        "create_time": "String",
+        "update_time": "String"
+    }
+}

@@ -1,0 +1,12 @@
+
+{"api":{
+	    "gate_key":"youkey",
+	    "gate_secret" :"yousecret",
+	    "mongodb_host":"youdomian",
+	    "mongodb_port":"27017",
+	    "mongodb_db":"youdb",
+	    "sms_apikey":"youkey"
+	},
+	"version" : "dev",
+	"isdev":"1"
+}
