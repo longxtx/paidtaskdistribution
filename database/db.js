@@ -267,7 +267,7 @@ DB.prototype.where = function (table_name, conditions, options, callback) {
 /**
  * 聚合查询
  * @param table_name 表名
- * @param match 用于过滤数据
+ * @param match 用于过滤数据 { score : { $gt : 70, $lte : 90 } }
  * @param group 用于分组条件 {"_id":"$to", total: {$sum: "$tvalue"},count: {$sum:1},max:{$max:"$tvalue"}};
  * @param sort 用于排序-1从大以小
  * @param skip 跳过条数
