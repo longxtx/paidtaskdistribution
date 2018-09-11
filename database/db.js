@@ -264,4 +264,32 @@ DB.prototype.where = function (table_name, conditions, options, callback) {
         });
 };
 
+/**
+ * 聚合查询
+ * @param table_name 表名
+ * @param match 用于过滤数据
+ * @param group 用于分组条件 {"_id":"$to", total: {$sum: "$tvalue"},count: {$sum:1},max:{$max:"$tvalue"}};
+ * @param sort 用于排序-1从大以小
+ * @param skip 跳过条数
+ * @param limit 限制返回条数
+ * @param callback 回调方法
+ */
+
+DB.prototype.aggregate= function (table_name, match,group,sort,skip,limit, callback) {
+    var node_model = this.getConnection(table_name);
+        node_model.aggregate([
+            {$match:match},
+            {$group: group},
+            {$sort: sort},
+            {$skip: skip},
+            {$limit:limit}
+         ]).exec(function(err,reslut){
+                    if (err) {
+                         callback(err);
+                    } else {
+                         callback(null, reslut);
+                    }
+         })
+};
+
 module.exports = new DB();
